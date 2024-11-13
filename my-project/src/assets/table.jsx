@@ -68,45 +68,11 @@ function MiTabla() {
 
   return (
     <>
-      <div className="w-full text-center font-bold py-2 text-xl">
+      <div className="w-full text-center font-bold py-2 text-xld">
         {" "}
         Clau's SMS Tracker{" "}
       </div>
-      <div className="max-w-md mx-auto flex select-none space-x-2">
-        {/* Tabla de conteo */}
-        <table className="w-full border-separate border rounded-md border-black">
-          <thead>
-            <tr>
-              <th className="px-4 py-2 bg-gray-200">Dispositions</th>
-              <th className="px-4 py-2 bg-gray-200">Counter</th>
-              <th className="px-4 py-2 bg-gray-200">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filas.map((fila) => (
-              <tr>
-                <td className="px-4 py-2">{fila.disposicion}</td>
-                <td className="px-4 py-2">{fila.contador}</td>
-                <td className="px-4 py-2 flex space-x-1">
-                  <button
-                    className="bg-cyan-600 rounded-md p-3 font-bold text-white self-start"
-                    onClick={() => incrementar(fila.id)}
-                  >
-                    +
-                  </button>
-                  <button
-                    className="bg-red-500 rounded-md p-3 font-bold text-white self-start"
-                    onClick={() => decrementar(fila.id)}
-                  >
-                    -
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        {/* Tabla de porcentaje */}
+      <div className="flex sm:flex-row-reverse flex-col">
         <div className="flex-col space-y-2">
           <table className="w-full border-separate border  rounded-md border-black max-h-52">
             <thead>
@@ -152,13 +118,45 @@ function MiTabla() {
                     : "bg-red-500"
                 }
               >
-                {cxn / total != NaN
-                  ? Math.round((cxn / total) * 100) + "%"
-                  : "0.0%"}
+                {cxn / total != NaN && Math.round((cxn / total) * 100) + "%"}
               </tr>
             </tbody>
           </table>
         </div>
+        {/* Tabla de conteo */}
+        <table className="w-full border-separate border rounded-md border-black">
+          <thead>
+            <tr>
+              <th className="px-4 py-2 bg-gray-200">Dispositions</th>
+              <th className="px-4 py-2 bg-gray-200">Counter</th>
+              <th className="px-4 py-2 bg-gray-200">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filas.map((fila) => (
+              <tr>
+                <td className="px-4 py-2">{fila.disposicion}</td>
+                <td className="px-4 py-2">{fila.contador}</td>
+                <td className="px-4 py-2 flex space-x-1">
+                  <button
+                    className="bg-cyan-600 rounded-md p-3 font-bold text-white self-start"
+                    onClick={() => incrementar(fila.id)}
+                  >
+                    +
+                  </button>
+                  <button
+                    className="bg-red-500 rounded-md p-3 font-bold text-white self-start"
+                    onClick={() => decrementar(fila.id)}
+                  >
+                    -
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {/* Tabla de porcentaje */}
       </div>
     </>
   );
