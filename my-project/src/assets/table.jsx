@@ -118,7 +118,7 @@ function MiTabla() {
                     : "bg-red-500"
                 }
               >
-                {cxn / total != NaN && Math.round((cxn / total) * 100) + "%"}
+                {cxn / total != NaN && ((cxn / total) * 100).toFixed(2) + "%"}
               </tr>
             </tbody>
           </table>
